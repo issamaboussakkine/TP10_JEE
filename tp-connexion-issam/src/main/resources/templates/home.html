@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Issam : Déclaration du type de document HTML5 -->
+<!-- Issam : xmlns:th="http://www.thymeleaf.org" permet d'utiliser les expressions Thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Issam : Titre de la page d'accueil personnalisée avec mon nom -->
+    <title>Accueil - Issam Application</title>
+    <style>
+        /* Issam : Style simple pour améliorer l'apparence de la page */
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 15px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #2b5797;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .logout-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Issam : Message de bienvenue personnalisé pour Issam -->
+    <h2>Bienvenue dans l'application sécurisée - Issam</h2>
+    <p>Connexion réussie ! Choisissez votre espace :</p>
+
+    <ul>
+        <!-- Issam : Lien vers l'espace utilisateur (accessible aux rôles USER et ADMIN) -->
+        <!-- Issam : th:href="@{/user/dashboard}" génère dynamiquement l'URL /user/dashboard -->
+        <li><a th:href="@{/user/dashboard}">📱 Espace Utilisateur</a></li>
+
+        <!-- Issam : Lien vers l'espace administrateur (accessible uniquement au rôle ADMIN) -->
+        <!-- Issam : th:href="@{/admin/dashboard}" génère dynamiquement l'URL /admin/dashboard -->
+        <li><a th:href="@{/admin/dashboard}">🔧 Espace Administrateur</a></li>
+    </ul>
+
+    <!-- Issam : Lien de déconnexion -->
+    <!-- Issam : th:href="@{/logout}" envoie vers l'URL /logout interceptée par Spring Security -->
+    <a th:href="@{/logout}" class="logout-btn">Se déconnecter</a>
+</div>
+</body>
+</html>

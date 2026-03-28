@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Issam : Déclaration du type de document HTML5 -->
+
+<!-- Issam : xmlns:th="http://www.thymeleaf.org" permet d'utiliser les expressions Thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Issam : Titre personnalisé avec mon nom pour identifier mon travail -->
+    <title>Connexion - Issam Application Sécurisée</title>
+    <style>
+        /* Issam : Style CSS pour rendre la page de login plus professionnelle */
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .login-box {
+            /* Issam : Boîte blanche qui contient le formulaire de connexion */
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        /* Issam : Style des champs de saisie (username et password) */
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Issam : Style du bouton de connexion */
+        button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #2b5797;
+            color: white;
+            cursor: pointer;
+        }
+        /* Issam : Message d'erreur en rouge lorsque les identifiants sont incorrects */
+        p.error {
+            color: red;
+        }
+        /* Issam : Message de confirmation de déconnexion en vert */
+        p.logout {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>Authentification - Issam</h2>
+    <!-- Issam : Formulaire de connexion personnalisé -->
+    <!-- Issam : th:action="@{/authenticate}" envoie les données vers l'URL interceptée par Spring Security -->
+    <!-- Issam : method="post" envoie les données en mode POST pour plus de sécurité -->
+    <form th:action="@{/authenticate}" method="post">
+
+        <label>Nom d'utilisateur :</label>
+        <!-- Issam : Champ pour saisir le nom d'utilisateur, name="username" est important car Spring Security attend ce nom -->
+        <input type="text" name="username" placeholder="Saisir le nom d'utilisateur" required>
+
+        <label>Mot de passe :</label>
+        <!-- Issam : Champ pour saisir le mot de passe, name="password" est important car Spring Security attend ce nom -->
+        <input type="password" name="password" placeholder="Mot de passe" required>
+
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <!-- Issam : Affiche un message d'erreur si le paramètre "error" est présent dans l'URL -->
+    <!-- Issam : Exemple : /login?error=true après un échec de connexion -->
+    <p th:if="${param.error}" class="error">
+        Identifiants incorrects, veuillez réessayer.
+    </p>
+
+    <!-- Issam : Affiche un message de déconnexion si le paramètre "logout" est présent dans l'URL -->
+    <!-- Issam : Exemple : /login?logout=true après une déconnexion réussie -->
+    <p th:if="${param.logout}" class="logout">
+        Vous êtes déconnecté avec succès.
+    </p>
+
+</div>
+</body>
+</html>

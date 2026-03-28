@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Issam : TP Formulaire de connexion personnalisé avec Spring Security
+    Auteur : Issam
+    Date : 28/03/2026
+    Description : Application sécurisée avec authentification en mémoire
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Issam : Parent Spring Boot - gère les versions des dépendances -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.14-SNAPSHOT</version>
+		<relativePath/> <!-- Issam : Recherche le parent dans le repository Maven -->
+	</parent>
+
+	<!-- Issam : Identifiant unique du projet (avec mon nom Issam) -->
+	<groupId>ma.fstg.issam</groupId>
+	<artifactId>tp-connexion-issam</artifactId>
+	<version>1.0.0-ISSAM</version>  <!-- Issam : Version personnalisée -->
+	<name>Issam Security Application</name>  <!-- Issam : Nom du projet personnalisé -->
+	<description>TP Formulaire de connexion personnalisé - Réalisé par Issam</description>  <!-- Issam : Description personnalisée -->
+	<url>https://github.com/issam/security-tp</url>  <!-- Issam : URL personnalisée (optionnel) -->
+
+	<!-- Issam : Informations sur la licence -->
+	<licenses>
+		<license>
+			<name>MIT License</name>  <!-- Issam : Licence personnalisée -->
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<!-- Issam : Informations sur le développeur (moi !) -->
+	<developers>
+		<developer>
+			<name>Issam</name>  <!-- Issam : Mon prénom -->
+			<email>issam@example.com</email>  <!-- Issam : Mon email -->
+			<organization>FSTG</organization>
+		</developer>
+	</developers>
+
+	<!-- Issam : Gestion de la source (optionnel) -->
+	<scm>
+		<connection>scm:git:git://github.com/issam/security-tp.git</connection>
+		<developerConnection>scm:git:ssh://github.com:issam/security-tp.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/issam/security-tp</url>
+	</scm>
+
+	<!-- Issam : Propriétés du projet -->
+	<properties>
+		<java.version>17</java.version>  <!-- Issam : Version Java utilisée -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  <!-- Issam : Encodage UTF-8 -->
+	</properties>
+
+	<!-- Issam : Dépendances du projet -->
+	<dependencies>
+		<!-- Issam : Spring Security - Gère l'authentification et les autorisations -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Issam : Thymeleaf - Moteur de templates HTML -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- Issam : Spring Web - Pour les contrôleurs MVC -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Issam : Intégration Spring Security avec Thymeleaf -->
+		<!-- Issam : Permet d'utiliser sec:authorize dans les pages HTML -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+
+		<!-- Issam : Spring Boot DevTools - Rechargement automatique pendant le développement -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Issam : Spring Boot Test - Pour les tests unitaires -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Issam : Spring Security Test - Pour tester la sécurité -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Issam : Configuration du build -->
+	<build>
+		<plugins>
+			<!-- Issam : Plugin Spring Boot pour empaqueter l'application -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Issam : Dépôts Maven (Spring Snapshots pour les versions SNAPSHOT) -->
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>  <!-- Issam : Désactiver les releases, seulement snapshots -->
+			</releases>
+		</repository>
+	</repositories>
+
+	<!-- Issam : Dépôts pour les plugins Maven -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>  <!-- Issam : Désactiver les releases, seulement snapshots -->
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

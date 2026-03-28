@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Issam : Déclaration du type de document HTML5 -->
+<!-- Issam : xmlns:th="http://www.thymeleaf.org" permet d'utiliser les expressions Thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Issam : Titre personnalisé pour le tableau de bord utilisateur -->
+    <title>User Dashboard - Issam</title>
+    <style>
+        /* Issam : Style CSS pour la page utilisateur */
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #28a745;
+        }
+        .user-info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Issam : Titre du tableau de bord utilisateur -->
+    <h2> Espace Utilisateur - Issam</h2>
+
+    <div class="user-info">
+        <!-- Issam : Accessible aux rôles USER et ADMIN -->
+        <p> Accessible aux rôles <strong>USER</strong> et <strong>ADMIN</strong>.</p>
+        <p> Consultez vos informations personnelles et vos préférences.</p>
+        <p>️ Gérez votre profil et vos paramètres.</p>
+    </div>
+
+    <!-- Issam : Lien de déconnexion vers /logout intercepté par Spring Security -->
+    <a th:href="@{/logout}"> Déconnexion</a>
+</div>
+</body>
+</html>
